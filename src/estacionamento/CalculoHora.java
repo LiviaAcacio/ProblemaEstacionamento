@@ -16,7 +16,7 @@ public class CalculoHora {
 	
 	Scanner sc = new Scanner(System.in);
 	
-	int horaEntrada, minutoEntrada, horaSaida, minutoSaida;
+	int horaEntrada, minutoEntrada, horaSaida, minutoSaida, conta = 4;
 	
 	
 	//Essas validações também podem ser feitas com if mas o wihile ajuda a encutar o cdógio e o processamento 
@@ -60,15 +60,15 @@ public class CalculoHora {
 	int calculoMinuto = Math.abs(minutoSaida - minutoEntrada);
 	
 	if(calculoHora ==  0 && calculoMinuto > 0) { //se forem apenas alguns minutos
-		System.out.println("4");
+		System.out.println("O valor a ser pago é: " + conta);
 	} else if(calculoHora == 1 && calculoMinuto < 59){ //se for até 1h e 59m
-		System.out.println("4");
-	} else if(calculoHora > 1 ) { //Se passar de 1h
-		System.out.println("6");
-	} else if(calculoHora > 2) { //Se passar de 2h
-		int horaMais = 6 + 1;
-		System.out.println("Após duas horas é cobrado 6h +1 real por cada hora a mais.");
-		System.out.println(horaMais);
+		System.out.println("O valor a ser pago é: " +(conta + 2));
+	} else if(calculoHora > 2 && calculoMinuto > 0 && calculoMinuto < 59) { //Se passar de 2h
+		
+		conta = (conta + 2) + (calculoHora -  2) * 1; 
+		
+		System.out.println("Após duas horas é cobrado R$6,00 +1 real por cada hora excedente.");
+		System.out.println(conta);
   }
 	sc.close();
   }
